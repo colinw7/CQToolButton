@@ -8,6 +8,8 @@
 #include <QMenu>
 
 #include <icon.xpm>
+#include <icon_on.xpm>
+#include <icon_off.xpm>
 
 int
 main(int argc, char **argv)
@@ -30,10 +32,15 @@ CQToolButtonTest(QWidget *parent) :
 
   //---
 
+  QIcon icon;
+
+  icon.addPixmap(QPixmap(icon_on_data ), QIcon::Normal, QIcon::On);
+  icon.addPixmap(QPixmap(icon_off_data), QIcon::Normal, QIcon::Off);
+
   button_ = new CQToolButton;
 
   button_->setText("Button");
-  button_->setIcon(QIcon(QPixmap(icon_data)));
+  button_->setIcon(icon);
   button_->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
   //button_->setPopupMode(QToolButton::MenuButtonPopup);
   //button_->setPopupMode(QToolButton::InstantPopup);
@@ -124,10 +131,15 @@ CQToolButtonTest(QWidget *parent) :
   connect(menu3Box_ , SIGNAL(clicked(bool)), this, SLOT(updateMenu()));
   connect(menu4Box_ , SIGNAL(clicked(bool)), this, SLOT(updateMenu()));
 
+  layout->addWidget(grid);
+
   //---
 
-  layout->addWidget(grid);
-  layout->addWidget(button_);
+  QHBoxLayout *buttonLayout = new QHBoxLayout;
+
+  buttonLayout->addWidget(button_);
+
+  layout->addLayout(buttonLayout);
   layout->addStretch(1);
 }
 

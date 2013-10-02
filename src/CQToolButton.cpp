@@ -588,9 +588,13 @@ drawToolButton(const QStyle *style, const QStyleOptionToolButton *toolbutton,
   // is this a menu button without separate menu popup button
   bool menu_no_popup = (! menu_popup && (toolbutton->features & QStyleOptionToolButton::HasMenu));
 
+  // does menu button without separate menu popup button have text
+  bool menu_no_popup_text (menu_no_popup && toolbutton->toolButtonStyle != Qt::ToolButtonIconOnly);
+
   if (debug_) {
-    if (menu_popup   ) std::cerr << "menu_popup"    << std::endl;
-    if (menu_no_popup) std::cerr << "menu_no_popup" << std::endl;
+    if (menu_popup        ) std::cerr << "menu_popup"         << std::endl;
+    if (menu_no_popup     ) std::cerr << "menu_no_popup"      << std::endl;
+    if (menu_no_popup_text) std::cerr << "menu_no_popup_text" << std::endl;
   }
 
   //---
@@ -657,7 +661,7 @@ drawToolButton(const QStyle *style, const QStyleOptionToolButton *toolbutton,
   if      (menu_popup)
     menuButtonRect = style->subControlRect(CC_ToolButton, toolbutton, SC_ToolButtonMenu, widget);
   else if (menu_no_popup) {
-    int bw = 8;
+    int bw = (menu_no_popup_text ? 8 : 6);
 
     subMenuRect = QRect(buttonRect.right() - bw, buttonRect.y(), bw - 2, buttonRect.height());
     subTextRect = buttonRect.adjusted(-bw/2,0,-bw,0);
