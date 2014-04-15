@@ -1,10 +1,12 @@
 TEMPLATE = lib
 
-TARGET = 
+TARGET = CQToolButton
 
 DEPENDPATH += .
 
 CONFIG += staticlib
+
+QT += widgets
 
 # Input
 HEADERS += \
