@@ -3,14 +3,14 @@
 #define FOCUS_TRACKING 1
 
 #include <QStyleOption>
-#include <QWindowsStyle>
+#include <QProxyStyle>
 #include <QPainter>
 #include <QMouseEvent>
 #include <QStylePainter>
 
 #include <iostream>
 
-class CQToolButtonStyle : public QWindowsStyle {
+class CQToolButtonStyle : public QProxyStyle {
  public:
   CQToolButtonStyle() : drawCustom_(true) { }
 
@@ -30,7 +30,7 @@ class CQToolButtonStyle : public QWindowsStyle {
       drawToolButton(proxy(), (QStyleOptionToolButton *) opt, p, widget, mouseOverControls);
     }
     else
-      QWindowsStyle::drawComplexControl(cc, opt, p, widget);
+      QProxyStyle::drawComplexControl(cc, opt, p, widget);
   }
 
  public:
