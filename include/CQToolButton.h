@@ -11,11 +11,11 @@ class CQToolButton : public QToolButton {
   CQToolButton(QWidget *parent=0);
 
  private:
-  void mouseMoveEvent(QMouseEvent *e);
+  void mouseMoveEvent(QMouseEvent *e) override;
 
-  void leaveEvent(QEvent *);
+  void leaveEvent(QEvent *) override;
 
-  void paintEvent(QPaintEvent *e);
+  void paintEvent(QPaintEvent *e) override;
 
   void drawPopupButton(QStyleOptionToolButton &opt);
   void drawMenuButton(QStyleOptionToolButton &opt);
