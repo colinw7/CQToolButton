@@ -8,7 +8,7 @@ class CQToolButton : public QToolButton {
   Q_OBJECT
 
  public:
-  CQToolButton(QWidget *parent=0);
+  CQToolButton(QWidget *parent=nullptr);
 
  private:
   void mouseMoveEvent(QMouseEvent *e) override;

@@ -27,7 +27,8 @@ class CQToolButtonStyle : public QProxyStyle {
       if (opt->state & QStyle::State_MouseOver)
         mouseOverControls = (QStyle::SC_ToolButton | QStyle::SC_ToolButtonMenu);
 
-      drawToolButton(proxy(), (QStyleOptionToolButton *) opt, p, widget, mouseOverControls);
+      drawToolButton(proxy(), reinterpret_cast<const QStyleOptionToolButton *>(opt), p,
+                     widget, mouseOverControls);
     }
     else
       QProxyStyle::drawComplexControl(cc, opt, p, widget);
