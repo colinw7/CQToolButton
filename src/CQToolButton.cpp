@@ -266,7 +266,7 @@ drawPopupButton(QStyleOptionToolButton &opt)
 
   QPalette pal = opt.palette;
 
-  QColor bg = pal.background().color();
+  QColor bg = pal.window().color();
 
   // draw button
   bool drawButton = (buttonState & (QStyle::State_Sunken | QStyle::State_Raised));
@@ -395,13 +395,13 @@ drawMenuButton(QStyleOptionToolButton &opt)
   int bw = 8;
 
   QRect subMenuRect = QRect(buttonRect.right() - bw, buttonRect.y(), bw - 2, buttonRect.height());
-  QRect subTextRect = buttonRect.adjusted(-bw/2,0,-bw,0);
+  QRect subTextRect = buttonRect.adjusted(-bw/2, 0, -bw, 0);
 
   //------
 
   QPalette pal = opt.palette;
 
-  QColor bg = pal.background().color();
+  QColor bg = pal.window().color();
 
   // draw button
   bool drawButton = (buttonState & (QStyle::State_Sunken | QStyle::State_Raised));
@@ -499,7 +499,7 @@ drawNormalButton(QStyleOptionToolButton &opt)
 
   QPalette pal = opt.palette;
 
-  QColor bg = pal.background().color();
+  QColor bg = pal.window().color();
 
   // draw button
   bool drawButton = (buttonState & (QStyle::State_Sunken | QStyle::State_Raised));
@@ -665,14 +665,14 @@ drawToolButton(const QStyle *style, const QStyleOptionToolButton *toolbutton,
     int bw = (menu_no_popup_text ? 8 : 6);
 
     subMenuRect = QRect(buttonRect.right() - bw, buttonRect.y(), bw - 2, buttonRect.height());
-    subTextRect = buttonRect.adjusted(-bw/2,0,-bw,0);
+    subTextRect = buttonRect.adjusted(-bw/2, 0, -bw, 0);
   }
 
   //---
 
   QPalette pal = toolbutton->palette;
 
-  QColor bg = pal.background().color();
+  QColor bg = pal.window().color();
 
   QStyleOptionToolButton sopt = *toolbutton;
 
