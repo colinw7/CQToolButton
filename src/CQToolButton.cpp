@@ -20,7 +20,7 @@ class CQToolButtonStyle : public QProxyStyle {
 
  private:
   void drawComplexControl(ComplexControl cc, const QStyleOptionComplex *opt,
-                          QPainter *p, const QWidget *widget) const {
+                          QPainter *p, const QWidget *widget) const override {
     if (drawCustom_ && cc == CC_ToolButton) {
       SubControls mouseOverControls = QStyle::SC_None;
 
